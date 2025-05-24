@@ -31,9 +31,9 @@ When Asking Questions, Please Provide:
 > - [x] Login-free GPT-3.5 Conversation
 > - [x] GPT-3.5 Model Conversation (Default to GPT-3.5 if model name does not contain gpt-4, i.e., text-davinci-002-render-sha)
 > - [x] GPT-4 Series Model Conversation (Use corresponding model by including: gpt-4, gpt-4o, gpt-4o-mini, gpt-4-moblie, requires AccessToken)
-> - [x] O1 Series Model Conversation (Use corresponding model by including o1-preview, o1-mini, requires AccessToken)
+> - [x] O1/O3/O4 series model dialogue (the corresponding model can be used by passing in model names including o3, o4-mini, etc., and AccessToken needs to be passed in)
 > - [x] GPT-4 Model Drawing, Code, Internet Access
-> - [x] Support for GPTs (Input model name: gpt-4-gizmo-g-*)
+> - [x] Support GPTs (input model name: gpt-4-gizmo-g-*, the previous model can be changed, Team workspace projects need to use this)
 > - [x] Support for Team Plus Accounts (Requires team account id)
 > - [x] Upload Images and Files (API-compatible format, supports URL and base64)
 > - [x] Can be Used as a Gateway, Supports Multi-machine Distributed Deployment
@@ -89,6 +89,13 @@ If the `AUTHORIZATION` environment variable is set, you can use the set value as
 
 > - `AccessToken` retrieval: Log in to the ChatGPT website, then open [https://chatgpt.com/api/auth/session](https://chatgpt.com/api/auth/session) to get the `accessToken` value.
 > - `RefreshToken` retrieval: Method not provided here.
+> - Get `ChatGPT-Account-ID`:
+> - Method ①, visit <https://chatgpt.com/admin> and use F12 to find the request <https://chatgpt.com/backend-api/accounts/UUID/users>, this ID is it.
+> - Method ②, read the `account_user_id` in the response from the previous step, the UUID behind it.
+> - Method ③, visit <https://chatgpt.com/api/auth/session> and find the id under account (not organizationId), or when the web page initiates a workspace conversation request, the F12 request header has this.
+> - Get `gizmo` ID:
+> - Method ①, open the project package, the URL starts with g-p, and remove the English version of the project name behind it.
+> - Method ②, have a conversation in the workspace project, and find `gizmo_id` in the request body.
 > - No login required for gpt-3.5, no token needed.
 
 ## Tokens Management
